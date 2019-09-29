@@ -1,0 +1,20 @@
+#server port
+server:
+    port: 9527
+    
+#Redis
+spring:
+    redis:
+        database: 0
+        host: localhost
+        password: ''
+        port: 6379
+        prefix: fis_
+        jedis:
+            max-active: 8
+            max-wait: -1ms
+            max-idle: 8
+            min-idle: 0
+        timeout: 5000ms    
+
+spring.devtools.restart.enabled: true  
