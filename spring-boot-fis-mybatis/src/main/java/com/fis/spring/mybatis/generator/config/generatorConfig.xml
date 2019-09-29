@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	 <!-- <context id="xlzx_cs" targetRuntime="MyBatis3">
+	
+    context:生成一组对象的环境 
+    id:必选，上下文id，用于在生成错误时提示
+    defaultModelType:指定生成对象的样式
+        1，conditional：类似hierarchical；
+        2，flat：所有内容（主键，blob）等全部生成在一个对象中；
+        3，hierarchical：主键生成一个XXKey对象(key class)，Blob等单独生成一个对象，其他简单属性在一个对象中(record class)
+    targetRuntime:
+        1，MyBatis3：默认的值，生成基于MyBatis3.x以上版本的内容，包括XXXBySample；
+        2，MyBatis3Simple：类似MyBatis3，只是不生成XXXBySample；
+    introspectedColumnImpl：类全限定名，用于扩展MBG
+    
+-->
+	<context id="fis" targetRuntime="MyBatis3Simple" defaultModelType="conditional">
+	<!-- 	<commentGenerator>
+			<property name="suppressDate" value="true" />
+			关闭注释 
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator> -->
+		<!--数据库链接地址账号密码 -->
+		<commentGenerator type="com.fis.spring.mybatis.generator.commentGenerator.MyCommentGenerator"></commentGenerator>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost/fis" userId="root"
+			password="123456">
+			 <property name="useInformationSchema" value="true"/>
+   			 <!--设置可以获取remarks信息-->
+             <property name="remarks" value="true"/>
+             <property name="nullCatalogMeansCurrent" value="true" />
+		</jdbcConnection>
+		
+		
+		<javaTypeResolver>
+			<!-- number类型转换成JAVA BigDecimal类型 1~4 Short 5~9 Integer 10~18 Long 18+ 
+				BigDecimal -->
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!--生成Model类存放位置 -->
+		<javaModelGenerator targetPackage="com.fis.spring.mybatis.system.entity"
+			targetProject="src/main/java">
+			<!-- enableSubPackages:是否让schema作为包的后缀 -->
+			<property name="enableSubPackages" value="false" />
+			<!-- 从数据库返回的值被清理前后的空格 -->
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!--生成映射文件存放位置 -->
+		<sqlMapGenerator targetPackage="com.fis.spring.mybatis.system.mapper"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+		<!--生成Dao类存放位置 -->
+		<!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码 type="ANNOTATEDMAPPER",生成Java Model 
+			和基于注解的Mapper对象 type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象 type="XMLMAPPER",生成SQLMap 
+			XML文件和独立的Mapper接口 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.fis.spring.mybatis.system.dao" targetProject="src/main/java">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+		<!--生成对应表及类名 -->
+		
+		<!-- useActualColumnNames 为 true 返参格式跟表字段对应， -->
+		<!-- 如下是例子，执行会覆盖之前的文件，慎重！！！ -->
+		 
+		<table tableName="user_group"  domainObjectName="UserGroup" >
+			<property name="useActualColumnNames" value="true" />
+		</table> 
+			
+
+	</context>
+</generatorConfiguration>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fis.spring.mybatis.system.dao.UserGroupMapper">
+  <resultMap id="BaseResultMap" type="com.fis.spring.mybatis.system.entity.UserGroup">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="group_id" jdbcType="VARCHAR" property="group_id" />
+    <result column="group_name" jdbcType="VARCHAR" property="group_name" />
+    <result column="user_id" jdbcType="INTEGER" property="user_id" />
+    <result column="company_id" jdbcType="INTEGER" property="company_id" />
+    <result column="create_time" jdbcType="INTEGER" property="create_time" />
+    <result column="create_user" jdbcType="INTEGER" property="create_user" />
+    <result column="update_time" jdbcType="INTEGER" property="update_time" />
+    <result column="update_user" jdbcType="INTEGER" property="update_user" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_group
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.fis.spring.mybatis.system.entity.UserGroup">
+    insert into user_group (id, group_id, group_name, 
+      user_id, company_id, create_time, 
+      create_user, update_time, update_user
+      )
+    values (#{id,jdbcType=INTEGER}, #{group_id,jdbcType=VARCHAR}, #{group_name,jdbcType=VARCHAR}, 
+      #{user_id,jdbcType=INTEGER}, #{company_id,jdbcType=INTEGER}, #{create_time,jdbcType=INTEGER}, 
+      #{create_user,jdbcType=INTEGER}, #{update_time,jdbcType=INTEGER}, #{update_user,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.fis.spring.mybatis.system.entity.UserGroup">
+    update user_group
+    set group_id = #{group_id,jdbcType=VARCHAR},
+      group_name = #{group_name,jdbcType=VARCHAR},
+      user_id = #{user_id,jdbcType=INTEGER},
+      company_id = #{company_id,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=INTEGER},
+      create_user = #{create_user,jdbcType=INTEGER},
+      update_time = #{update_time,jdbcType=INTEGER},
+      update_user = #{update_user,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, group_id, group_name, user_id, company_id, create_time, create_user, update_time, 
+    update_user
+    from user_group
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, group_id, group_name, user_id, company_id, create_time, create_user, update_time, 
+    update_user
+    from user_group
+  </select>
+</mapper>
