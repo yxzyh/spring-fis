@@ -24,7 +24,7 @@ public class CommonController {
 	public ActionResult getResult(ActionContent ac){
 		ActionResult ar = new ActionResult();
 		String str = commonService.getResult(ac);
-		ar.setData(str);
+		ar.setData("data",str);
 		return ar;
 	}
 

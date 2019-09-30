@@ -2,7 +2,9 @@ package com.fis.spring.common.biz.service;
 
 import org.springframework.stereotype.Service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.fis.spring.common.application.action.ActionContent;
+import com.fis.spring.common.framework.util.JsonUtil;
 
 /**
  * common service层
@@ -19,8 +21,9 @@ public class CommonService {
 	 * @return 
 	 */
 	public String getResult(ActionContent ac) {
-		// TODO Auto-generated method stub
-		
+		JSONObject args = ac.getParameters();
+		String rst = JsonUtil.getString(args,"fis","-1");
+		return rst;
 	}
 
 }
