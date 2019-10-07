@@ -23,4 +23,5 @@ public class Cap7MainConfigOfLifeCycle {
 	public Bike bike() {
 		return new Bike();
 	}
+	
 }
