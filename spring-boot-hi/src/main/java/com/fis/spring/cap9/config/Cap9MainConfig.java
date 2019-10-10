@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Primary;
 import com.fis.spring.cap9.dao.TestDao;
 
 @Configuration
-@ComponentScan({"com.fis.spring.cap9.controller","com.fis.spring.cap9.service","com.fis.spring.cap9.dao"})
+@ComponentScan({"com.fis.spring.cap9.controller","com.fis.spring.cap9.service","com.fis.spring.cap9.dao","com.fis.spring.cap9.bean"})
 public class Cap9MainConfig {
 
 	//@Primary
