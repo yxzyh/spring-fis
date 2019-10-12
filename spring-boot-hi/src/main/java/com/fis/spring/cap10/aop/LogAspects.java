@@ -1,5 +1,8 @@
 package com.fis.spring.cap10.aop;
 
+import java.util.Arrays;
+
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -29,23 +32,23 @@ public class LogAspects {
 	}
 
 	@Before("pointCut()")
-	public void logStart() {
-		System.out.println("除法运行前：{}");
+	public void logStart(JoinPoint joinPoint) {
+		System.out.println("方法名：" + joinPoint.getSignature().getName() + "，除法运行前：{" + Arrays.asList(joinPoint.getArgs()) + "}");
 	}
 	
 	@After("pointCut()")
-	public void logEnd() {
-		System.out.println("除法运行结束：{}");
+	public void logEnd(JoinPoint joinPoint) {
+		System.out.println("方法名：" + joinPoint.getSignature().getName() + "，除法运行结束：{}");
 	}
 	
-	@AfterReturning("pointCut()")
-	public void logReturn() {
-		System.out.println("除法运行正常返回，运行结果是：{}");
+	@AfterReturning(value = "pointCut()", returning = "rst")
+	public void logReturn(Object rst) {
+		System.out.println("除法运行正常返回，运行结果是：{" + rst + "}");
 	}
 	
-	@AfterThrowing("pointCut()")
-	public void logException() {
-		System.out.println("除法运行异常，异常：{}");
+	@AfterThrowing(value = "pointCut()",throwing = "e")
+	public void logException(Exception e) {
+		System.out.println("除法运行异常，异常：{" + e + "}");
 	}
 	
 	@Around("pointCut()")
