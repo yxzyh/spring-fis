@@ -10,11 +10,11 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 import com.fis.spring.cap10.aop.Calculator;
 import com.fis.spring.cap10.aop.LogAspects;
-@Configuration
+@Configuration("fisConfig")
 @EnableAspectJAutoProxy
 public class Cap10MainConfig {
 	
-	@Bean
+	@Bean("fisCalculator")
 	public Calculator calculator() {
 		return new Calculator();
 	}

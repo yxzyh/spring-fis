@@ -1,0 +1,8 @@
+server:
+    port: 9528
+spring:
+    data:
+        mongodb:
+            database: fis2019
+            host: dn2fis01
+            port: 27017
