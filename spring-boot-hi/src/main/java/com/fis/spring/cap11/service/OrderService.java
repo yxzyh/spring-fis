@@ -22,7 +22,7 @@ public class OrderService {
 		orderDao.insert();
 		System.out.println("service ,insert");
 		
-		int a = 1/0;
+		//int a = 1/0;
 		
 	}
 }

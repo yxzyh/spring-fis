@@ -27,6 +27,7 @@ public class Cap11MainConfig {
 	//创建数据源
 	@Bean
 	public DataSource dataSource() throws PropertyVetoException {
+		//c3po封装了jdbc，dataSource的接口实现。
 		ComboPooledDataSource dataSource = new ComboPooledDataSource();
 		dataSource.setUser("root");
 		dataSource.setPassword("123456");
